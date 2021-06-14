@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  height: 95vh;
+  display: flex;
+  padding: 1.5rem;
+  font-family: "Kufam", cursive;
+}
+
+img {
+  align-self: center;
+  height: 25vh;
+  cursor: pointer;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 30rem;
+  padding: 1rem;
+  background-color: #505050;
+}
+
+.sidebar_content_box {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+}
+
+.form_content {
+  list-style: none;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  border: none;
+  height: 5.5rem;
+  width: 80%;
+  margin: 1rem;
+  text-align: left;
+  display: grid;
+  grid-gap: 4px;
+  background-color: #00c4cc;
+  cursor: pointer;
+  box-shadow: 5px 10px 18px black;
+  opacity: 1;
+}
+
+.form_row {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  margin-right: 0;
+  text-align: right;
+}
+
+.item1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.item2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.item5 {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  text-align: left;
+}
+
+.comment {
+  width: 65%;
+}
+
+input,
+select {
+  width: 3.2rem;
+  padding: 0.3rem 1.2rem;
+  margin-left: 0.5rem;
+  border-radius: 7px;
+  text-align: center;
+  border: none;
+  background-color: #505050;
+  font-family: inherit;
+  color: whitesmoke;
+}
+input:focus {
+  outline: none;
+}
+select:focus {
+  outline: none;
+  border-radius: 5px;
+}
+
+::placeholder {
+  color: whitesmoke;
+}
+
+select {
+  flex: 1;
+}
+
+.event_flex {
+  list-style: none;
+  padding: 1rem 1rem;
+  border-radius: 15px;
+  border: none;
+  height: 5.5rem;
+  width: auto;
+  margin: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 1px 1px 1px #505050;
+  font-size: 1rem;
+  background-color: #00c4cc;
+  cursor: pointer;
+  color: black;
+  box-shadow: 5px 10px 18px black;
+  opacity: 0.6;
+}
+.event_flex:hover {
+  opacity: 1;
+}
+
+.event_flex2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+
+.log_comment {
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.walking_event {
+  border-left: 15px solid yellow;
+}
+.cycling_event {
+  border-left: 15px solid green;
+}
+
+/* #logo {
+  align-self: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px white;
+  color: grey;
+} */
+
+#footer {
+  align-self: center;
+  margin-top: auto;
+  color: black;
+  text-shadow: 1px 1px 1px#00c4cc;
+}
+
+#map {
+  flex: 1;
+  height: 100%;
+  background-color: #00c4cc;
+}
+
+/* popup on maps */
+.leaflet-popup .leaflet-popup-content-wrapper {
+  border-radius: 5px;
+  background-color: #00c4cc;
+  font-family: "Kufam", cursive;
+}
+
+.leaflet-popup .leaflet-popup-tip {
+  background-color: #505050;
+}
+
+.walking-popup .leaflet-popup-content-wrapper {
+  border-left: 10px solid yellow;
+  box-shadow: 5px 10px 18px grey;
+}
+
+.running-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid yellow;
+}
+.cycling-popup .leaflet-popup-content-wrapper {
+  border-left: 10px solid green;
+}
+
+.hidden {
+  display: none;
+}

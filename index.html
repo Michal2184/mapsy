@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mapsy</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kufam:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <img id="logo" src="pics/family_mapsy.png" alt="Mapsy" />
+      <ul class="sidebar_content_box">
+        <form class="form_content hidden">
+          <div class="form_row item1">
+            <label>Type</label>
+            <select class="input-type" required>
+              <option value="" disabled selected hidden>🎯</option>
+              <option>Walking</option>
+              <option>Cycling</option>
+            </select>
+          </div>
+          <div class="form_row item2">
+            <label>People</label>
+            <select class="people" required>
+              <option value="" disabled selected hidden>🔢</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10+</option>
+            </select>
+          </div>
+          <div class="form_row item3">
+            <label>Distance</label><input class="distance" placeholder="km" />
+          </div>
+          <div class="form_row item4">
+            <label>Duration</label><input class="duration" placeholder="min" />
+          </div>
+
+          <div class="form_row form_row-comment item5">
+            <label>Comment</label>
+            <input class="comment" />
+          </div>
+
+          <button class="button-submit hidden" type="submit">
+            Submit form
+          </button>
+        </form>
+
+        <li class="hidden">
+          <div class="walking_event event_flex">
+            <div class="event_flex1">
+              <p class="walking_event-title">Walking on January 16, 2021</p>
+            </div>
+            <div class="event_flex2">
+              <div class="event_details">
+                <span class="event_icon">🚶</span>
+                <span class="event_distance">15</span>
+                <span class="event_option">km</span>
+              </div>
+              <div class="event_detail">
+                <span class="event_icon">⏰</span>
+                <span class="event_duration">30</span>
+                <span class="event_unit">min</span>
+              </div>
+              <div class="event_details">
+                <span class="event_icon"> 👨‍👩‍👧‍👦</span>
+                <span class="event_value">6</span>
+                <span class="event_unit">people</span>
+              </div>
+            </div>
+            <div class="event_details log_comment">
+              <span class="event_icon">📜</span>
+              <span class="event_value"
+                >walking in the forest near bowker vale</span
+              >
+            </div>
+          </div>
+        </li>
+        <li class="hidden">
+          <div class="cycling_event event_flex">
+            <div class="event_flex1">
+              <p class="walking_event-title">Cycling on January 7, 2021</p>
+            </div>
+            <div class="event_flex2">
+              <div class="event_details">
+                <span class="event_icon">🚴</span>
+                <span class="event_distance">27</span>
+                <span class="event_option">km</span>
+              </div>
+              <div class="event_detail">
+                <span class="event_icon">⏰</span>
+                <span class="event_duration">30</span>
+                <span class="event_unit">min</span>
+              </div>
+              <div class="event_details">
+                <span class="event_icon"> 👨‍👩‍👧‍👦</span>
+                <span class="event_value">6</span>
+                <span class="event_unit">people</span>
+              </div>
+            </div>
+            <div class="event_details log_comment">
+              <span class="event_icon">📜</span>
+              <span class="event_value">quick ride in heaton park</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <p id="footer">
+        © Copyright by
+        <a href="mailto:samordak85@gmail.com">Michal Samordak </a>
+      </p>
+    </div>
+    <div id="map"></div>
+  </body>
+</html>
