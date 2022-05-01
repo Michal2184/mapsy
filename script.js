@@ -53,11 +53,11 @@ const peopleForm = document.querySelector(".people");
 const box = document.querySelector(".sidebar_content_box");
 
 class App {
-  #map;
-  #mapEvent;
-  #activityClass = "walking-popup";
-  #activityType;
-  #activites = [];
+  map;
+  mapEvent;
+  activityClass = "walking-popup";
+  activityType;
+  activites = [];
   constructor() {
     // get postion
     this._getPosition();
@@ -76,9 +76,9 @@ class App {
         function () {
           console.log("no GPS lock");
         }
-      )
+      );
     else {
-      console.log("No geolocation avalible from browser")
+      console.log("No geolocation avalible from browser");
     }
   }
 
@@ -88,24 +88,24 @@ class App {
 
     const coords = [latitude, longitude];
     console.log(coords);
-    this.#map = L.map("map").setView(coords, 14);
+    this.map = L.map("map").setView(coords, 14);
 
     L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(this.#map);
+    }).addTo(this.map);
 
     // hadling clicks on map
-    this.#map.on("click", this._showForm.bind(this));
+    this.map.on("click", this._showForm.bind(this));
 
-    this.#activites.forEach((activ) => {
+    this.activites.forEach((activ) => {
       this._renderActivity(activ);
       this._renderActivityMarker(activ);
     });
   }
 
   _showForm(mapE) {
-    this.#mapEvent = mapE;
+    this.mapEvent = mapE;
     sidebarForm.classList.remove("hidden");
     commentForm.focus();
   }
@@ -136,12 +136,12 @@ class App {
 
     e.preventDefault();
     // get data from form
-    this.#activityType = inputType.value;
+    this.activityType = inputType.value;
     const distance = +distanceForm.value;
     const duration = +durationForm.value;
     const comment = commentForm.value;
     const people = +peopleForm.value;
-    const { lat, lng } = this.#mapEvent.latlng;
+    const { lat, lng } = this.mapEvent.latlng;
     const newCoords = [lat, lng];
     console.log(newCoords);
     let activity;
@@ -155,25 +155,28 @@ class App {
     console.log(people > 0);
     console.log(typeof duration === "number");
     if (
-      this.#activityType === "Walking" &&
+      this.activityType === "Walking" &&
       typeof distance === "number" &&
       people > 0 &&
       typeof duration === "number"
     ) {
       activity = new Walking(newCoords, distance, duration, people, comment);
     } else if (
-      this.#activityType === "Cycling" &&
+      this.activityType === "Cycling" &&
       typeof distance === "number" &&
       people > 0 &&
       typeof duration === "number"
     ) {
       activity = new Cycling(newCoords, distance, duration, people, comment);
     } else {
-      distanceForm.value = durationForm.value = peopleForm.value = commentForm.value =
-        "";
+      distanceForm.value =
+        durationForm.value =
+        peopleForm.value =
+        commentForm.value =
+          "";
       sidebarForm.classList.add("hidden");
     }
-    this.#activites.push(activity);
+    this.activites.push(activity);
 
     // add obj to activityType array
     this._renderActivityMarker(activity);
@@ -183,8 +186,11 @@ class App {
     // render activityType on the list
 
     // clear fileds
-    distanceForm.value = durationForm.value = peopleForm.value = commentForm.value =
-      "";
+    distanceForm.value =
+      durationForm.value =
+      peopleForm.value =
+      commentForm.value =
+        "";
     sidebarForm.classList.add("hidden");
     activity = null;
 
@@ -194,7 +200,7 @@ class App {
 
   _renderActivityMarker(activity) {
     L.marker(activity.coords)
-      .addTo(this.#map)
+      .addTo(this.map)
       .bindPopup(
         L.popup({
           maxWidth: 250,
@@ -255,10 +261,10 @@ class App {
   _moveToPopup(e) {
     const activityElement = e.target.closest(".activity");
     if (!activityElement) return;
-    const activity = this.#activites.find(
+    const activity = this.activites.find(
       (work) => work.id === activityElement.dataset.id
     );
-    this.#map.setView(activity.coords, 14, {
+    this.map.setView(activity.coords, 14, {
       animate: true,
       pan: {
         duaration: 1,
@@ -267,7 +273,7 @@ class App {
   }
 
   _setLocalStorage() {
-    localStorage.setItem("activities", JSON.stringify(this.#activites));
+    localStorage.setItem("activities", JSON.stringify(this.activites));
   }
 
   _getLocalStorage() {
@@ -276,8 +282,8 @@ class App {
 
     if (!data) return;
 
-    this.#activites = data;
-    this.#activites.forEach((activ) => {
+    this.activites = data;
+    this.activites.forEach((activ) => {
       console.log(activ);
       this._renderActivity(activ);
     });
