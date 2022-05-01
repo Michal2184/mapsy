@@ -76,7 +76,10 @@ class App {
         function () {
           console.log("no GPS lock");
         }
-      );
+      )
+    else {
+      console.log("No geolocation avalible from browser")
+    }
   }
 
   _loadMap(position) {
